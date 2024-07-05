@@ -1,0 +1,9 @@
+C:\Users\agust\OneDrive\Escritorio\TPFinalNivel2_Allocco\negocio\bin\Debug\negocio.dll
+C:\Users\agust\OneDrive\Escritorio\TPFinalNivel2_Allocco\negocio\bin\Debug\negocio.pdb
+C:\Users\agust\OneDrive\Escritorio\TPFinalNivel2_Allocco\negocio\bin\Debug\dominio.dll
+C:\Users\agust\OneDrive\Escritorio\TPFinalNivel2_Allocco\negocio\bin\Debug\dominio.pdb
+C:\Users\agust\OneDrive\Escritorio\TPFinalNivel2_Allocco\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+C:\Users\agust\OneDrive\Escritorio\TPFinalNivel2_Allocco\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+C:\Users\agust\OneDrive\Escritorio\TPFinalNivel2_Allocco\negocio\obj\Debug\negocio.csproj.Up2Date
+C:\Users\agust\OneDrive\Escritorio\TPFinalNivel2_Allocco\negocio\obj\Debug\negocio.dll
+C:\Users\agust\OneDrive\Escritorio\TPFinalNivel2_Allocco\negocio\obj\Debug\negocio.pdb
