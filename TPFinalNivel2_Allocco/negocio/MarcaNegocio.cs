@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace negocio
 {
-    internal class MarcaNegocio
+    public class MarcaNegocio
     {
         public List<Marca> listar()
         {
@@ -17,6 +17,7 @@ namespace negocio
             {
                 datos.setearConsulta("Select Id, Descripcion From MARCAS");
                 datos.ejecutarLectura();
+
                 while (datos.Lector.Read())
                 {
                     Marca aux = new Marca();

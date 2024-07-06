@@ -28,3 +28,4 @@ C:\Users\agust\OneDrive\Escritorio\APP-GESTION-CATALOGO\TPFinalNivel2_Allocco\pr
 C:\Users\agust\OneDrive\Escritorio\APP-GESTION-CATALOGO\TPFinalNivel2_Allocco\presentacion\obj\Debug\presenta.D2D8CCE5.Up2Date
 C:\Users\agust\OneDrive\Escritorio\APP-GESTION-CATALOGO\TPFinalNivel2_Allocco\presentacion\obj\Debug\presentacion.exe
 C:\Users\agust\OneDrive\Escritorio\APP-GESTION-CATALOGO\TPFinalNivel2_Allocco\presentacion\obj\Debug\presentacion.pdb
+C:\Users\agust\OneDrive\Escritorio\APP-GESTION-CATALOGO\TPFinalNivel2_Allocco\presentacion\obj\Debug\presentacion.frmAltaArticulo.resources
