@@ -23,6 +23,11 @@ namespace presentacion
         private void frmCatalogo_Load(object sender, EventArgs e)
         {
             cargar();
+            cboCampo.Items.Add("Código");
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Marca");
+            cboCampo.Items.Add("Categoría");
+            cboCampo.Items.Add("Precio");
         }
         private void cargar()
         {
@@ -31,8 +36,7 @@ namespace presentacion
             {
                 listaArticulo = negocio.listar();
                 dgvArticulos.DataSource = listaArticulo;
-                dgvArticulos.Columns["Id"].Visible = false;
-                dgvArticulos.Columns["UrlImagen"].Visible = false;
+                ocultarColumnas();
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C2";
                 cargarImagen(listaArticulo[0].UrlImagen);
             }
@@ -73,10 +77,18 @@ namespace presentacion
                 MessageBox.Show(ex.ToString());
             }
         }
+        private void ocultarColumnas()
+        {
+            dgvArticulos.Columns["Id"].Visible = false;
+            dgvArticulos.Columns["UrlImagen"].Visible = false;
+        }
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.UrlImagen);
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.UrlImagen);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -98,6 +110,41 @@ namespace presentacion
         private void btnEliminacionFisica_Click(object sender, EventArgs e)
         {
             eliminar();
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if (opcion == "Precio")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltro.Text;
+                dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
