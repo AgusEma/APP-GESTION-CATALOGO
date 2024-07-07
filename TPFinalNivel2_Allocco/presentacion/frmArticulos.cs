@@ -12,22 +12,34 @@ using negocio;
 
 namespace presentacion
 {
-    public partial class frmCatalogo : Form
+    public partial class frmArticulos : Form
     {
         private List<Articulo> listaArticulo;
-        public frmCatalogo()
+        public frmArticulos()
         {
             InitializeComponent();
         }
 
         private void frmCatalogo_Load(object sender, EventArgs e)
         {
+            cargar();
+        }
+        private void cargar()
+        {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArticulo = negocio.listar();
-            dgvArticulos.DataSource = listaArticulo;
-            dgvArticulos.Columns["UrlImagen"].Visible = false;
-            dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C2";
-            cargarImagen(listaArticulo[0].UrlImagen);
+            try
+            {
+                listaArticulo = negocio.listar();
+                dgvArticulos.DataSource = listaArticulo;
+                dgvArticulos.Columns["UrlImagen"].Visible = false;
+                dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C2";
+                cargarImagen(listaArticulo[0].UrlImagen);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
         private void cargarImagen(string imagen)
         {
@@ -50,6 +62,7 @@ namespace presentacion
         {
             frmAltaArticulo alta = new frmAltaArticulo();
             alta.ShowDialog();
+            cargar();
         }
     }
 }
