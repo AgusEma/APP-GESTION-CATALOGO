@@ -63,10 +63,11 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria)values(@codigo, @nombre, @descripcion, @idMarca, @idCategoria)");
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl)values(@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @urlImagen)");
                 datos.setearParametros("@codigo", nuevo.Codigo);
                 datos.setearParametros("@nombre", nuevo.Nombre);
                 datos.setearParametros("@descripcion", nuevo.Descripcion);
+                datos.setearParametros("@urlImagen", nuevo.UrlImagen);
                 datos.setearParametros("@idMarca", nuevo.Marca.Id);
                 datos.setearParametros("@idCategoria", nuevo.Marca.Id);
             }

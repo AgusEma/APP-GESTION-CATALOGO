@@ -34,6 +34,7 @@ namespace presentacion
                 arti.Codigo = txtCodigo.Text;
                 arti.Nombre = txtNombre.Text;
                 arti.Descripcion = txtDescripcion.Text;
+                arti.UrlImagen = txtUrlImagen.Text;
                 arti.Marca = (Marca)cboMarca.SelectedItem;
                 arti.Categoria = (Categoria)cboCategoria.SelectedItem;
 
@@ -59,6 +60,22 @@ namespace presentacion
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void txtUrlImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtUrlImagen.Text);
+        }
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxUrlImagen.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pbxUrlImagen.Load("https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png");
             }
         }
     }
