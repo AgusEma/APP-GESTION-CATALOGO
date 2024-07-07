@@ -32,6 +32,7 @@
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminacionFisica = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +62,7 @@
             // 
             this.btnAgregar.Location = new System.Drawing.Point(13, 236);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(82, 23);
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -69,19 +70,30 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(94, 236);
+            this.btnModificar.Location = new System.Drawing.Point(95, 236);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.Size = new System.Drawing.Size(82, 23);
             this.btnModificar.TabIndex = 3;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // btnEliminacionFisica
+            // 
+            this.btnEliminacionFisica.Location = new System.Drawing.Point(177, 236);
+            this.btnEliminacionFisica.Name = "btnEliminacionFisica";
+            this.btnEliminacionFisica.Size = new System.Drawing.Size(92, 23);
+            this.btnEliminacionFisica.TabIndex = 4;
+            this.btnEliminacionFisica.Text = "Eliminar Fisico";
+            this.btnEliminacionFisica.UseVisualStyleBackColor = true;
+            this.btnEliminacionFisica.Click += new System.EventHandler(this.btnEliminacionFisica_Click);
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 301);
+            this.ClientSize = new System.Drawing.Size(892, 277);
+            this.Controls.Add(this.btnEliminacionFisica);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.pbxArticulo);
@@ -101,6 +113,7 @@
         private System.Windows.Forms.PictureBox pbxArticulo;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnEliminacionFisica;
     }
 }
 
