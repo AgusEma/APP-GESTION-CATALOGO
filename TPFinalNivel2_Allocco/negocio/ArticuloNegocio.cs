@@ -22,6 +22,7 @@ namespace negocio
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
+                    aux.Id = (int)datos.Lector["Id"];
                     if (!(datos.Lector["Codigo"] is DBNull))
                         aux.Codigo = (string)datos.Lector["Codigo"];
                     if (!(datos.Lector["Nombre"] is DBNull))
@@ -63,13 +64,15 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl)values(@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @urlImagen)");
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)values(@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @urlImagen, @precio)");
                 datos.setearParametros("@codigo", nuevo.Codigo);
                 datos.setearParametros("@nombre", nuevo.Nombre);
                 datos.setearParametros("@descripcion", nuevo.Descripcion);
-                datos.setearParametros("@urlImagen", nuevo.UrlImagen);
                 datos.setearParametros("@idMarca", nuevo.Marca.Id);
                 datos.setearParametros("@idCategoria", nuevo.Marca.Id);
+                datos.setearParametros("@urlImagen", nuevo.UrlImagen);
+                datos.setearParametros("@precio", nuevo.Precio);
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
@@ -81,6 +84,31 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public void modificar(Articulo arti)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update ARTICULOS set Codigo=@codigo, Nombre=@nombre, Descripcion=@desc, ImagenUrl=@img, IdMarca=@idMarca, IdCategoria=@idCategoria, Precio=@precio where Id=@id");
+                datos.setearParametros("@codigo", arti.Codigo);
+                datos.setearParametros("@nombre", arti.Nombre);
+                datos.setearParametros("@desc", arti.Descripcion);
+                datos.setearParametros("@img", arti.UrlImagen);
+                datos.setearParametros("@idMarca", arti.Marca.Id);
+                datos.setearParametros("@idCategoria", arti.Categoria.Id);
+                datos.setearParametros("@precio", arti.Precio);
+                datos.setearParametros("@id", arti.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

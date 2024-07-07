@@ -14,9 +14,16 @@ namespace presentacion
 {
     public partial class frmAltaArticulo : Form
     {
+        private Articulo articulo = null;
         public frmAltaArticulo()
         {
             InitializeComponent();
+        }
+        public frmAltaArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Articulo";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -26,20 +33,34 @@ namespace presentacion
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Articulo arti = new Articulo();
+            //Articulo arti = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
             {
-                arti.Codigo = txtCodigo.Text;
-                arti.Nombre = txtNombre.Text;
-                arti.Descripcion = txtDescripcion.Text;
-                arti.UrlImagen = txtUrlImagen.Text;
-                arti.Marca = (Marca)cboMarca.SelectedItem;
-                arti.Categoria = (Categoria)cboCategoria.SelectedItem;
+                if(articulo == null)
+                    articulo = new Articulo();
 
-                negocio.agregar(arti);
-                MessageBox.Show("Agregado exitosamente.");
+                articulo.Codigo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.UrlImagen = txtUrlImagen.Text;
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                decimal valor;
+                if (decimal.TryParse(txtPrecio.Text, out valor))
+                    articulo.Precio = valor;
+
+                if (articulo.Id != 0)
+                {
+                    negocio.modificar(articulo);
+                    MessageBox.Show("Modificado exitosamente.");
+                }
+                else
+                {
+                    negocio.agregar(articulo);
+                    MessageBox.Show("Agregado exitosamente.");
+                }
                 Close();
             }
             catch (Exception ex)
@@ -55,7 +76,22 @@ namespace presentacion
             try
             {
                 cboMarca.DataSource = marcaNegocio.listar();
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
                 cboCategoria.DataSource = categoriaNegocio.listar();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
+
+                if(articulo != null)
+                {
+                    txtCodigo.Text = articulo.Codigo;
+                    txtNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    txtUrlImagen.Text = articulo.UrlImagen;
+                    cargarImagen(txtUrlImagen.Text);
+                    cboMarca.SelectedValue = articulo.Marca.Id;
+                    cboCategoria.SelectedValue = articulo.Categoria.Id;
+                }
             }
             catch (Exception ex)
             {
