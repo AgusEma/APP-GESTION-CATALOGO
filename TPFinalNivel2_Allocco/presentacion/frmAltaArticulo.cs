@@ -30,7 +30,41 @@ namespace presentacion
         {
             Close();
         }
-
+        private bool validarFiltroAlta()
+        {
+            if(txtCodigo.Text == "")
+            {
+                MessageBox.Show("Por favor ingrese un Código.");
+                return true;
+            }
+            if(txtNombre.Text == "")
+            {
+                MessageBox.Show("Por favor ingrese un Nombre.");
+                return true;
+            }
+            if (txtPrecio.Text == "")
+            {
+                MessageBox.Show("Por favor ingrese un Precio.");
+                return true;
+            }
+            if (!(soloNumeros(txtPrecio.Text)))
+            {
+                MessageBox.Show("Solo números en el Precio");
+                return true;
+            }
+            return false;
+        }
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -50,6 +84,9 @@ namespace presentacion
                 if (decimal.TryParse(txtPrecio.Text, out valor))
                     articulo.Precio = valor;
 
+                if (validarFiltroAlta())
+                    return;
+
                 if (articulo.Id != 0)
                 {
                     negocio.modificar(articulo);
@@ -57,6 +94,7 @@ namespace presentacion
                 }
                 else
                 {
+                    //taca
                     negocio.agregar(articulo);
                     MessageBox.Show("Agregado exitosamente.");
                 }
