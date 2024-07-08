@@ -33,7 +33,6 @@ namespace presentacion
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            //Articulo arti = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
@@ -91,6 +90,7 @@ namespace presentacion
                     cargarImagen(txtUrlImagen.Text);
                     cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
+                    txtPrecio.Text = articulo.Precio.ToString();
                 }
             }
             catch (Exception ex)

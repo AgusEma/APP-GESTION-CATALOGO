@@ -244,9 +244,33 @@ namespace negocio
                 throw ex;
             }
         }
-        public void mostrarDetalle(Articulo seleccionado)
+        public string verDetalle(Articulo seleccionado)
         {
-            lblCodVerDetalle.Text = seleccionado.Codigo;
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Select Codigo, Descripcion From ARTICULOS");
+                datos.ejecutarLectura();
+                
+                while (datos.Lector.Read())
+                {
+                    if (!(datos.Lector["Codigo"] is DBNull))
+                        seleccionado.Codigo = (string)datos.Lector["Codigo"];
+                    if (!(datos.Lector["Descripcion"] is DBNull))
+                        seleccionado.Descripcion = (string)datos.Lector["Descripcion"];
+                }
+
+                return seleccionado.Codigo + ". " + seleccionado.Descripcion + ".";
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

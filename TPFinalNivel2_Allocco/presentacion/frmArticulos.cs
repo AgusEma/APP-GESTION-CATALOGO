@@ -15,6 +15,7 @@ namespace presentacion
     public partial class frmArticulos : Form
     {
         private List<Articulo> listaArticulo;
+        private Articulo filaSeleccionada;
         public frmArticulos()
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace presentacion
             cboCampo.Items.Add("Marca");
             cboCampo.Items.Add("Categoría");
             cboCampo.Items.Add("Precio");
+            filaSeleccionada = listaArticulo[0];
         }
         private void cargar()
         {
@@ -81,6 +83,7 @@ namespace presentacion
         {
             dgvArticulos.Columns["Id"].Visible = false;
             dgvArticulos.Columns["UrlImagen"].Visible = false;
+            dgvArticulos.Columns["Descripcion"].Visible = false;
         }
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
@@ -185,14 +188,17 @@ namespace presentacion
                 MessageBox.Show(ex.ToString());
             }
         }
-
+        private void dgvArticulos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                filaSeleccionada = listaArticulo[e.RowIndex];
+            }
+        }
         private void btnVerDetalle_Click(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmVerDetalle detalle = new frmVerDetalle();
-            detalle.ShowDialog();
-            negocio.mostrarDetalle(seleccionado);
+            txtVerDetalle.Text = "Descripción: " + filaSeleccionada.Descripcion + Environment.NewLine + "Url Imagen: " + filaSeleccionada.UrlImagen;
+            txtVerDetalle.Visible = true;
         }
     }
 }
