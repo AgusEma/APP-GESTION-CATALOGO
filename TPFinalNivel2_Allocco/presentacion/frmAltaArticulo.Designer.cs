@@ -45,7 +45,7 @@
             this.pbxUrlImagen = new System.Windows.Forms.PictureBox();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblObligatorio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxUrlImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(43, 13);
             this.lblCodigo.TabIndex = 0;
-            this.lblCodigo.Text = "Codigo:";
+            this.lblCodigo.Text = "Código:";
             // 
             // lblNombre
             // 
@@ -78,6 +78,7 @@
             // 
             // txtCodigo
             // 
+            this.txtCodigo.BackColor = System.Drawing.SystemColors.Window;
             this.txtCodigo.Location = new System.Drawing.Point(104, 43);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(119, 20);
@@ -131,9 +132,9 @@
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Location = new System.Drawing.Point(43, 177);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(55, 13);
+            this.lblCategoria.Size = new System.Drawing.Size(57, 13);
             this.lblCategoria.TabIndex = 9;
-            this.lblCategoria.Text = "Categoria:";
+            this.lblCategoria.Text = "Categoría:";
             // 
             // cboMarca
             // 
@@ -195,21 +196,23 @@
             this.txtPrecio.Size = new System.Drawing.Size(119, 20);
             this.txtPrecio.TabIndex = 6;
             // 
-            // label1
+            // lblObligatorio
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 263);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "label1";
+            this.lblObligatorio.AutoSize = true;
+            this.lblObligatorio.ForeColor = System.Drawing.Color.Red;
+            this.lblObligatorio.Location = new System.Drawing.Point(32, 263);
+            this.lblObligatorio.Name = "lblObligatorio";
+            this.lblObligatorio.Size = new System.Drawing.Size(35, 13);
+            this.lblObligatorio.TabIndex = 16;
+            this.lblObligatorio.Text = "label1";
+            this.lblObligatorio.Visible = false;
             // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(443, 295);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblObligatorio);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.pbxUrlImagen);
@@ -230,7 +233,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmAltaArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmAltaArticulo";
+            this.Text = "Nuevo Articulo";
             this.Load += new System.EventHandler(this.frmAltaArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxUrlImagen)).EndInit();
             this.ResumeLayout(false);
@@ -257,6 +260,6 @@
         private System.Windows.Forms.PictureBox pbxUrlImagen;
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblObligatorio;
     }
 }

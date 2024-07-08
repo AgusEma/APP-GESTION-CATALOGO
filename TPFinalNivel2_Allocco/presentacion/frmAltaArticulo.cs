@@ -32,27 +32,36 @@ namespace presentacion
         }
         private bool validarFiltroAlta()
         {
-            if(txtCodigo.Text == "")
+            List<TextBox> textBoxes = new List<TextBox> { txtCodigo, txtNombre, txtPrecio };
+            int contador = 0;
+            foreach (TextBox textBox in textBoxes)
             {
-                MessageBox.Show("Por favor ingrese un Código.");
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    textBox.BackColor = Color.LightCoral;
+                    //lblCodigo.ForeColor = Color.Red;
+                    contador++;
+                }
+                else
+                {
+                    textBox.BackColor = SystemColors.Window;
+                    //lblCodigo.ForeColor = Color.Red;
+                }
+            }
+            if(contador > 0)
+            {
+                lblObligatorio.Text = "* Por favor, complete todos los campos obligatorios antes de continuar.";
+                lblObligatorio.ForeColor = Color.Red;
+                lblObligatorio.Visible = true;
                 return true;
             }
-            if(txtNombre.Text == "")
+            else
             {
-                MessageBox.Show("Por favor ingrese un Nombre.");
-                return true;
+                lblObligatorio.Text = "";
+                lblObligatorio.ForeColor = SystemColors.ControlText;
+                lblObligatorio.Visible = false;
+                return false;
             }
-            if (txtPrecio.Text == "")
-            {
-                MessageBox.Show("Por favor ingrese un Precio.");
-                return true;
-            }
-            if (!(soloNumeros(txtPrecio.Text)))
-            {
-                MessageBox.Show("Solo números en el Precio");
-                return true;
-            }
-            return false;
         }
         private bool soloNumeros(string cadena)
         {
