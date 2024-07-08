@@ -182,6 +182,19 @@ namespace presentacion
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltro.Text;
                 dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+                if (dgvArticulos.RowCount == 0)
+                {
+                    btnAgregar.Enabled = false;
+                    btnModificar.Enabled = false;
+                    btnEliminacionFisica.Enabled = false;
+                    btnVerDetalle.Enabled = false;
+                } else
+                {
+                    btnAgregar.Enabled = true;
+                    btnModificar.Enabled = true;
+                    btnEliminacionFisica.Enabled = true;
+                    btnVerDetalle.Enabled = true;
+                }
             }
             catch (Exception ex)
             {
