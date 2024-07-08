@@ -29,3 +29,4 @@ C:\Users\agust\OneDrive\Escritorio\APP-GESTION-CATALOGO\TPFinalNivel2_Allocco\pr
 C:\Users\agust\OneDrive\Escritorio\APP-GESTION-CATALOGO\TPFinalNivel2_Allocco\presentacion\obj\Debug\presentacion.pdb
 C:\Users\agust\OneDrive\Escritorio\APP-GESTION-CATALOGO\TPFinalNivel2_Allocco\presentacion\obj\Debug\presentacion.frmAltaArticulo.resources
 C:\Users\agust\OneDrive\Escritorio\APP-GESTION-CATALOGO\TPFinalNivel2_Allocco\presentacion\obj\Debug\presentacion.frmArticulos.resources
+C:\Users\agust\OneDrive\Escritorio\APP-GESTION-CATALOGO\TPFinalNivel2_Allocco\presentacion\obj\Debug\presentacion.frmVerDetalle.resources

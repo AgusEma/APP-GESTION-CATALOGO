@@ -130,12 +130,51 @@ namespace presentacion
                 cboCriterio.Items.Add("Contiene");
             }
         }
-
+        private bool validarFiltro()
+        {
+            if(cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione el campo para filtrar");
+                return true;
+            }
+            if(cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el criterio para filtrar");
+                return true;
+            }
+            if(cboCampo.SelectedItem.ToString() == "Precio")
+            {
+                if (string.IsNullOrEmpty(txtFiltro.Text))
+                {
+                    MessageBox.Show("Debes cargar el filtro para numericos...");
+                    return true;
+                }
+                if (!(soloNumeros(txtFiltro.Text)))
+                {
+                    MessageBox.Show("Solo nros para filtrar por un campo precio...");
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         private void btnFiltro_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
+                if (validarFiltro())
+                    return;
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltro.Text;
@@ -145,6 +184,15 @@ namespace presentacion
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnVerDetalle_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmVerDetalle detalle = new frmVerDetalle();
+            detalle.ShowDialog();
+            negocio.mostrarDetalle(seleccionado);
         }
     }
 }

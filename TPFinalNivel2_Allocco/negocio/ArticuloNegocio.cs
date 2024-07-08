@@ -244,5 +244,9 @@ namespace negocio
                 throw ex;
             }
         }
+        public void mostrarDetalle(Articulo seleccionado)
+        {
+            lblCodVerDetalle.Text = seleccionado.Codigo;
+        }
     }
 }

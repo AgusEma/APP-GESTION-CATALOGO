@@ -40,6 +40,7 @@
             this.lblFiltro = new System.Windows.Forms.Label();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.btnFiltro = new System.Windows.Forms.Button();
+            this.btnVerDetalle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
@@ -158,11 +159,22 @@
             this.btnFiltro.UseVisualStyleBackColor = true;
             this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
             // 
+            // btnVerDetalle
+            // 
+            this.btnVerDetalle.Location = new System.Drawing.Point(563, 236);
+            this.btnVerDetalle.Name = "btnVerDetalle";
+            this.btnVerDetalle.Size = new System.Drawing.Size(92, 23);
+            this.btnVerDetalle.TabIndex = 12;
+            this.btnVerDetalle.Text = "Ver Detalle";
+            this.btnVerDetalle.UseVisualStyleBackColor = true;
+            this.btnVerDetalle.Click += new System.EventHandler(this.btnVerDetalle_Click);
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 305);
+            this.Controls.Add(this.btnVerDetalle);
             this.Controls.Add(this.btnFiltro);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.lblFiltro);
@@ -199,6 +211,7 @@
         private System.Windows.Forms.Label lblFiltro;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.Button btnFiltro;
+        private System.Windows.Forms.Button btnVerDetalle;
     }
 }
 
