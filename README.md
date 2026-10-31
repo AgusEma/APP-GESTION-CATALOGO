@@ -33,6 +33,8 @@ La solución está separada en tres capas, cada una en su propio proyecto:
 
 `presentacion` depende de `negocio` y `dominio`; `negocio` depende de `dominio`.
 
+Todas las consultas a la base de datos usan parámetros (`SqlParameter`) para prevenir inyección SQL, incluidas las búsquedas con filtros.
+
 ## Cómo ejecutarlo
 
 **Requisitos:** Windows, Visual Studio (con el workload de desarrollo de escritorio .NET) y SQL Server Express.
